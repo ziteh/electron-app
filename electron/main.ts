@@ -1,8 +1,10 @@
 import { app, BrowserWindow } from "electron";
 import { fileURLToPath } from "node:url";
+import { Ipc } from "@electron/ipc";
 import path from "node:path";
 import packageJson from "../package.json";
 
+const IS_DEV = process.env.NODE_ENV === "development";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // The built directory structure
@@ -38,8 +40,14 @@ function createWindow() {
 
   // Test active push message to Renderer-process.
   win.webContents.on("did-finish-load", () => {
-    win?.webContents.send("main-process-message", new Date().toLocaleString());
+    win?.webContents.send("mainProcessMessage", new Date().toLocaleString());
+
+    if (IS_DEV) {
+      win?.webContents.openDevTools();
+    }
   });
+
+  Ipc.init();
 
   if (VITE_DEV_SERVER_URL) {
     win.loadURL(VITE_DEV_SERVER_URL);

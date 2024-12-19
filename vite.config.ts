@@ -5,12 +5,35 @@ import react from "@vitejs/plugin-react";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: "./",
+  resolve: {
+    extensions: [".js", ".mjs", ".cjs", ".ts", ".tsx", ".json"],
+    alias: {
+      "@src": path.resolve(__dirname, "src"),
+    },
+  },
   plugins: [
     react(),
     electron({
       main: {
         // Shortcut of `build.lib.entry`.
         entry: "electron/main.ts",
+        vite: {
+          resolve: {
+            extensions: [".js", ".mjs", ".cjs", ".ts", ".json"],
+            alias: {
+              "@electron": path.resolve(__dirname, "electron"),
+            },
+          },
+          build: {
+            rollupOptions: {
+              external: [
+                // C/C++ Addons
+                // "serialport"
+              ],
+            },
+          },
+        },
       },
       preload: {
         // Shortcut of `build.rollupOptions.input`.

@@ -1,10 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/electron-vite.animate.svg";
 import "./App.css";
 
-function App() {
+export default function App() {
   const [count, setCount] = useState(0);
+
+  const handleClick = async () => {
+    setCount((count) => count + 1);
+
+    const version = await window.ipcRenderer.invoke("getAppVersion");
+    console.log("App Version:", version);
+  };
+
+  useEffect(() => {
+    window.ipcRenderer.send("rendererProcessMessage", `Count: ${count}`);
+  }, [count]);
 
   return (
     <>
@@ -22,9 +33,7 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+        <button onClick={handleClick}>count is {count}</button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
@@ -35,5 +44,3 @@ function App() {
     </>
   );
 }
-
-export default App;
