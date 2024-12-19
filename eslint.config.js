@@ -13,10 +13,13 @@ export default [
       "dist-ssr/",
       "dist-electron/",
       "release/",
+      ".husky/",
       "electron-builder-config.cjs",
     ],
   },
-  { files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"] },
+  {
+    files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
+  },
   {
     languageOptions: {
       parserOptions: {

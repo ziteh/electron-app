@@ -11,7 +11,8 @@
     "build": "tsc && vite build && electron-builder --config=./electron-builder-config.cjs",
     "preview": "vite preview",
     "format": "npx prettier . --write",
-    "lint": "eslint . --report-unused-disable-directives --max-warnings 0"
+    "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
+    "prepare": "husky"
   },
   "dependencies": {
     "react": "^19.0.0",
@@ -28,11 +29,18 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-react": "^7.37.2",
     "globals": "^15.14.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.2.11",
     "prettier": "3.4.2",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.18.1",
     "vite": "^6.0.4",
     "vite-plugin-electron": "^0.29.0",
     "vite-plugin-electron-renderer": "^0.14.6"
+  },
+  "lint-staged": {
+    "*.*": [
+      "prettier --write --ignore-unknown"
+    ]
   }
 }
