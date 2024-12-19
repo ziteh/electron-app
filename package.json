@@ -1,6 +1,6 @@
 {
   "name": "electron-vite-react-template",
-  "displayName": "EleCtron+Vite+React",
+  "displayName": "Electron+Vite+React",
   "version": "0.0.0",
   "author": "ZiTe <honmonoh@gmail.com>",
   "main": "dist-electron/main.js",
