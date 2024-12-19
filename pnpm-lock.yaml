@@ -29,6 +29,9 @@ importers:
       electron-builder:
         specifier: ^25.1.8
         version: 25.1.8(electron-builder-squirrel-windows@24.13.3)
+      prettier:
+        specifier: 3.4.2
+        version: 3.4.2
       typescript:
         specifier: ^5.7.2
         version: 5.7.2
@@ -2582,6 +2585,14 @@ packages:
       }
     engines: { node: ^10 || ^12 || >=14 }
 
+  prettier@3.4.2:
+    resolution:
+      {
+        integrity: sha512-e9MewbtFo+Fevyuxn/4rrcDAaq0IYxPGLvObpQjiZBMAzB9IGmzlnG9RZy3FFas+eBMu2vA0CszMeduow5dIuQ==,
+      }
+    engines: { node: ">=14" }
+    hasBin: true
+
   process-nextick-args@2.0.1:
     resolution:
       {
@@ -4956,6 +4967,8 @@ snapshots:
       nanoid: 3.3.8
       picocolors: 1.1.1
       source-map-js: 1.2.1
+
+  prettier@3.4.2: {}
 
   process-nextick-args@2.0.1: {}
 
