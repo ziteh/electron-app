@@ -1,8 +1,8 @@
 import { app, BrowserWindow } from "electron";
 import { fileURLToPath } from "node:url";
-import { Ipc } from "@electron/ipc";
 import path from "node:path";
-import packageJson from "../package.json";
+import { Ipc } from "@electron/ipc";
+import packageJson from "@electron/../package.json";
 
 const IS_DEV = process.env.NODE_ENV === "development";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -33,6 +33,21 @@ function createWindow() {
   win = new BrowserWindow({
     title: packageJson.displayName,
     icon: path.join(process.env.VITE_PUBLIC, "electron-vite.svg"),
+
+    // Size
+    width: 800,
+    height: 600,
+    minWidth: 400,
+    minHeight: 400,
+
+    // Custom title bar
+    // titleBarStyle: "hidden",
+    // titleBarOverlay: {
+    //   color: "#00000000",
+    //   symbolColor: "#ffffff",
+    //   height: 32,
+    // },
+
     webPreferences: {
       preload: path.join(__dirname, "preload.mjs"),
       contextIsolation: true,

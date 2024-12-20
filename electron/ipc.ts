@@ -1,5 +1,5 @@
 import { ipcMain, IpcMainEvent } from "electron";
-import packageJson from "../package.json";
+import packageJson from "@electron/../package.json";
 
 export class Ipc {
   public static init() {
